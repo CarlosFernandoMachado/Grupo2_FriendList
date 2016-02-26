@@ -55,13 +55,50 @@ int main(int argc, char*argv[]){
 				attron(COLOR_PAIR(5));
 				print_in_middle(stdscr, LINES / 2, 0, 0, strcpy(string,"Ingrese Nombre: "));
 				attroff(COLOR_PAIR(5));
-				getch();
-
+				char nombre[25];
+				int numero1[5];
+				int numero2[4];
+				noecho();
+				char temp = getch();
+				int cont = 0;
+				while(temp != '\n' && cont < 25){
+					noecho();
+					if ((temp <= 'z' && temp >= 'a') || (temp <= 'Z' && temp >= 'A')){
+						echo();
+						nombre[cont] = addch(temp);
+						noecho();
+						cont++;
+					}
+					temp = getch();
+				}
+				cont = 0;
 				init_pair(6, COLOR_GREEN, COLOR_BLACK);
 				attron(COLOR_PAIR(6));
 				print_in_middle(stdscr, LINES / 2+1, 0, 0, strcpy(string,"Ingrese Numero: "));
 				attroff(COLOR_PAIR(6));
-				getch();
+				temp = getch();
+				while( temp != '\n' && cont < 4){
+					if (temp == '1' || temp == '2' ||temp == '3' ||temp == '4' ||temp == '5' ||temp == '6' ||temp == '7' ||temp == '8' ||temp == '9'){
+						echo();
+						numero1[cont] = addch(temp);
+						noecho();
+						cont++;
+					}
+					temp = getch();
+				}
+				addch('-');
+				cont = 0;
+				temp = getch();
+				while( temp != '\n' && cont < 4){
+					if (temp == '1' || temp == '2' ||temp == '3' ||temp == '4' ||temp == '5' ||temp == '6' ||temp == '7' ||temp == '8' ||temp == '9'){
+						echo();
+						numero2[cont] = addch(temp);
+						noecho();
+						cont++;
+					}
+					temp = getch();
+				}
+				
 			}else if (caracter=='2'){
 				clear();
 				print_in_middle(stdscr, LINES / 2, 0, 0, strcpy(string,"Nombre "));
